@@ -1,0 +1,33 @@
+https://github.com/savbell/whisper-writer
+
+cd d:\brd\proj\2024\whisper-writer
+
+git clone https://github.com/savbell/whisper-writer
+cd whisper-writer
+
+# run miniconda.env.bat
+>d:
+>conda create --prefix d:\brd\proj\2024\whisper-writer\condaEnv
+--# Collecting av==10.0.0 (from -r .\whisper-writer\requirements.txt (line 5))
+--# Cython.Compiler.Errors.CompileError: av\logging.pyx
+>echo "cython<3.0" > PIP_CONSTRAINT.txt
+>set PIP_CONSTRAINT=PIP_CONSTRAINT.txt
+--# Collecting numba==0.57.0 (from -r .\whisper-writer\requirements.txt (line 34))
+--# RuntimeError: Cannot install on Python version 3.12.2; only versions >=3.8,<3.12 are supported
+>python --version
+Python 3.12.2
+>conda search --full-name python
+>conda install python=3.11.8
+>conda install git
+--# faster-whisper 0.10.0 depends on av==11.*
+>conda search --full-name av
+--# requirements.txt, updated:  av==11.0.0 
+--# faster-whisper 0.10.0 depends on ctranslate2<5 and >=4.0
+>pip index versions ctranslate2
+--# requirements.txt, updated:  ctranslate2==4.1.0
+>pip install -r .\whisper-writer\requirements.txt
+
+pip install pyinstaller
+pyi-makespec  --onefile run.py
+pyinstaller run.py 
+pyinstaller -F run.py --runtime-tmpdir .  --hidden-import="pynput.keyboard._win32" --hidden-import "pynput.mouse._win32"

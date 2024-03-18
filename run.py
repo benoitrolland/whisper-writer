@@ -16,6 +16,10 @@ print('Starting WhisperWriter...')
 # ko: [49856] Cannot create temporary directory!
 # if compile with the following --runtime-tmpdir option, loop again:
 # pyinstaller -F run.py --runtime-tmpdir .
-si = subprocess.STARTUPINFO()
-si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-subprocess.run([sys.executable,os.path.join('src','main.py'),os.environ['PYTHONUNBUFFERED']],env={'PYTHONUNBUFFERED':os.environ['PYTHONUNBUFFERED']},stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,startupinfo=si)
+
+#si = subprocess.STARTUPINFO()
+#si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+#subprocess.run([sys.executable,os.path.join('src','main.py'),os.environ['PYTHONUNBUFFERED']],env={'PYTHONUNBUFFERED':os.envi#ron['PYTHONUNBUFFERED']},stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,startupinfo=si)
+
+subprocess.run([sys.executable,os.path.join('src','main.py'),os.environ['PYTHONUNBUFFERED']],env={'PYTHONUNBUFFERED':os.environ['PYTHONUNBUFFERED']},stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+
